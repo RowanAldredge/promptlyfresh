@@ -1,46 +1,44 @@
-// /middleware.ts
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+// src/middleware.ts
+import { NextResponse } from 'next/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-// Public routes (no auth)
 const isPublicRoute = createRouteMatcher([
-  "/",
-  "/pricing",
-  "/sign-in(.*)",
-  "/sign-up(.*)",
-  "/api/waitlist",
-  "/api/stripe/webhook", // must remain public
-  // "/api/health",
+  '/',                    // landing page
+  '/api/waitlist',        // waitlist API
+  '/sign-in(.*)',         // Clerk pages
+  '/sign-up(.*)',
+  '/favicon.ico',
+  // If you have more public assets or pages, add them here:
+  '/_next/static(.*)',
+  '/_next/image(.*)',
+  '/images/(.*)',
+  '/public/(.*)',          // if you serve anything under /public (rare with App Router)
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  try {
-    // Let public routes pass
-    if (isPublicRoute(req)) {
-      return NextResponse.next();
+  const { userId, redirectToSignIn } = await auth();
+
+  // Allow all public routes through
+  if (isPublicRoute(req)) {
+    // Optional: If a signed-in user hits "/", send them to the app
+    if (req.nextUrl.pathname === '/' && userId) {
+      return NextResponse.redirect(new URL('/dashboard', req.url));
     }
-
-    // In your Clerk version, auth() returns a Promise
-    const { userId } = await auth();
-
-    // If unauthenticated, redirect manually (works across all versions)
-    if (!userId) {
-      const url = new URL("/sign-in", req.url);
-      // preserve where the user was going
-      url.searchParams.set("redirect_url", req.url);
-      return NextResponse.redirect(url);
-    }
-
-    // Authenticated → continue
-    return NextResponse.next();
-  } catch (err) {
-    // Never hard-fail in middleware: fail-open to avoid 500s
-    // (You can log err to Vercel "Functions" → Edge logs)
     return NextResponse.next();
   }
+
+  // Everything else requires auth
+  if (!userId) {
+    return redirectToSignIn({ returnBackUrl: req.url });
+  }
+
+  return NextResponse.next();
 });
 
-// Don’t run on Next internals or static assets
+// IMPORTANT: don't run middleware on static files and internals
 export const config = {
-  matcher: ["/((?!_next|.*\\..*|favicon.ico).*)"],
+  matcher: [
+    // Apply to all paths EXCEPT next internals and static assets
+    '/((?!_next|.*\\.(?:png|jpg|jpeg|svg|ico|css|js|map|txt)).*)',
+  ],
 };
