@@ -1,3 +1,5 @@
+// prisma/schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -26,6 +28,8 @@ model Email {
   updatedAt  DateTime   @updatedAt
   user       Profile    @relation(fields: [userId], references: [userId])
   deliveries Delivery[]
+
+  @@index([userId, status])
 }
 
 model Delivery {
@@ -41,6 +45,9 @@ model Delivery {
   email             Email     @relation(fields: [emailId], references: [id])
   user              Profile   @relation(fields: [userId], references: [userId])
   events            Event[]
+
+  @@index([emailId])
+  @@index([userId, status])
 }
 
 model Event {
@@ -52,9 +59,16 @@ model Event {
   delivery   Delivery  @relation(fields: [deliveryId], references: [id])
 
   @@index([deliveryId])
+  @@index([type, createdAt])
 }
 
 enum EventType {
   OPEN
   CLICK
+}
+
+model Waitlist {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
 }
