@@ -6,61 +6,66 @@ import {
   clerkClient,
 } from "@clerk/nextjs/server";
 
-// Define all public (non-gated) routes
+// Public (non-gated) routes
 const isPublic = createRouteMatcher([
   "/",                    // landing
-  "/(marketing)(.*)",     // waitlist or marketing pages
-  "/api/waitlist",        // waitlist endpoint
+  "/(marketing)(.*)",     // your public marketing/waitlist pages
+  "/api/waitlist",        // waitlist API
+  "/sign-in(.*)",         // Clerk auth pages must be public
+  "/sign-up(.*)",
+  "/sso-callback(.*)",
   "/favicon.ico",
   "/robots.txt",
   "/sitemap.xml",
-  "/_next(.*)",           // internal Next.js assets
+  "/_next(.*)",           // Next internals
 ]);
 
-// Define which emails can access the gated MVP
+// Comma-separated allow list of emails, set in Vercel settings
 const ALLOW_EMAILS = (process.env.ALLOW_EMAILS ?? "")
   .split(",")
   .map((s) => s.trim().toLowerCase())
   .filter(Boolean);
 
 export default clerkMiddleware(async (auth, req: NextRequest) => {
-  // Allow all public routes
+  // Let public routes through untouched
   if (isPublic(req)) return NextResponse.next();
 
-  // Require authentication for all other routes
+  // Everything else requires a signed-in user
   const { userId } = await auth();
+
   if (!userId) {
-    return NextResponse.redirect(new URL("/", req.url));
+    // Send them to sign-in, then back to the page they asked for
+    const signInUrl = new URL("/sign-in", req.url);
+    signInUrl.searchParams.set("redirect_url", req.url);
+    return NextResponse.redirect(signInUrl);
   }
 
-  // If allow list is empty, block everyone
+  // If you haven't configured emails yet, keep the app private by default
   if (ALLOW_EMAILS.length === 0) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
-  // Look up signed-in user's email via Clerk
-  let email = "";
+  // Pull the user's email from Clerk and check it against the allow list
   try {
     const client = await clerkClient();
     const user = await client.users.getUser(userId);
-    email =
+    const email =
       user.primaryEmailAddress?.emailAddress?.toLowerCase() ??
       user.emailAddresses?.[0]?.emailAddress?.toLowerCase() ??
       "";
+
+    if (email && ALLOW_EMAILS.includes(email)) {
+      return NextResponse.next();
+    }
   } catch {
-    // fallback to deny
+    // fall through to deny
   }
 
-  // Allow only if email is on the allow list
-  if (email && ALLOW_EMAILS.includes(email)) {
-    return NextResponse.next();
-  }
-
-  // Otherwise redirect to landing
+  // Not allowed → bounce to landing
   return NextResponse.redirect(new URL("/", req.url));
 });
 
-// Apply middleware to everything except static assets
+// Apply to everything except static assets
 export const config = {
   matcher: ["/((?!_next|.*\\.(?:png|jpg|jpeg|gif|svg|ico|js|css|map)).*)"],
 };
