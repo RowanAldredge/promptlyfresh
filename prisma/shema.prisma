@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  userId          String   @id
+  plan            String   @default("free")
+  genCount        Int      @default(0)
+  genPeriodStart  DateTime?
+  emails          Email[]
+  deliveries      Delivery[]
+}
+
+model Email {
+  id         String     @id @default(cuid())
+  userId     String
+  subject    String
+  body       String
+  status     String     @default("draft") // draft | sent | scheduled
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  user       Profile    @relation(fields: [userId], references: [userId])
+  deliveries Delivery[]
+}
+
+model Delivery {
+  id                String    @id @default(cuid())
+  emailId           String
+  userId            String
+  status            String    @default("queued") // queued | scheduled | sent
+  providerMessageId String?
+  recipientCount    Int       @default(0)
+  scheduledAt       DateTime?
+  sentAt            DateTime?
+  createdAt         DateTime  @default(now())
+  email             Email     @relation(fields: [emailId], references: [id])
+  user              Profile   @relation(fields: [userId], references: [userId])
+  events            Event[]
+}
+
+model Event {
+  id         String    @id @default(cuid())
+  deliveryId String
+  type       EventType
+  url        String?
+  createdAt  DateTime  @default(now())
+  delivery   Delivery  @relation(fields: [deliveryId], references: [id])
+
+  @@index([deliveryId])
+}
+
+enum EventType {
+  OPEN
+  CLICK
+}
