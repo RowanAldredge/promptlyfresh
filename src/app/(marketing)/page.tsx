@@ -48,11 +48,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* WHO PROMPTLY IS FOR */}
+      {/* WHO IS PROMPTLY FOR */}
       <section className="border-y bg-white">
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold">
-            Who Promptly is for
+            Who Is Promptly For?
           </h2>
 
           <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
