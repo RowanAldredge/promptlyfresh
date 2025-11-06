@@ -48,20 +48,39 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
+      {/* WHO PROMPTLY IS FOR */}
       <section className="border-y bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
-            Built for founders using
+        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold">
+            Who Promptly is for
+          </h2>
+
+          <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
+            Promptly is built for founders, creators, and small teams who want to send 
+            better marketing emails — without hiring a copywriter or wasting hours 
+            staring at a blank page.  
+            <br className="hidden md:block" />
+            Whether you run a Shopify store, manage a SaaS, or promote digital products, 
+            Promptly helps you write, test, and schedule campaigns in minutes.
           </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-slate-600 opacity-80">
-            <span>Shopify</span>
-            <span>Gumroad</span>
-            <span>Webflow</span>
-            <span>Framer</span>
+
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-slate-700 opacity-80">
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
+              🛍️ eCommerce founders
+            </span>
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
+              🧠 Creators & coaches
+            </span>
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
+              ⚙️ SaaS & startups
+            </span>
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
+              ✉️ Freelancers & agencies
+            </span>
           </div>
         </div>
       </section>
+
 
       {/* PROBLEM → PROMISE */}
       <section className="bg-slate-50">
