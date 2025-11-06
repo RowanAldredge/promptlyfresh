@@ -1,3 +1,4 @@
+// middleware.ts (or src/middleware.ts)
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import {
@@ -6,12 +7,12 @@ import {
   clerkClient,
 } from "@clerk/nextjs/server";
 
-// Public (non-gated) routes
+// --- Public (non-gated) routes ---
 const isPublic = createRouteMatcher([
   "/",                    // landing
-  "/(marketing)(.*)",     // your public marketing/waitlist pages
-  "/api/waitlist",        // waitlist API
-  "/sign-in(.*)",         // Clerk auth pages must be public
+  "/(marketing)(.*)",     // marketing/waitlist
+  "/api/waitlist",        // waitlist endpoint
+  "/sign-in(.*)",         // keep Clerk auth pages public
   "/sign-up(.*)",
   "/sso-callback(.*)",
   "/favicon.ico",
@@ -20,34 +21,49 @@ const isPublic = createRouteMatcher([
   "/_next(.*)",           // Next internals
 ]);
 
-// Comma-separated allow list of emails, set in Vercel settings
+// --- Env allow-lists ---
 const ALLOW_EMAILS = (process.env.ALLOW_EMAILS ?? "")
   .split(",")
   .map((s) => s.trim().toLowerCase())
   .filter(Boolean);
 
+const ALLOW_USER_IDS = (process.env.ALLOW_USER_IDS ?? "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+// Helper: supports both Clerk shapes (function -> Promise<ClerkClient> OR object)
+async function getClerkClient() {
+  const anyClient = clerkClient as unknown as any;
+  return typeof anyClient === "function" ? await anyClient() : anyClient;
+}
+
 export default clerkMiddleware(async (auth, req: NextRequest) => {
-  // Let public routes through untouched
+  // Let public routes through
   if (isPublic(req)) return NextResponse.next();
 
-  // Everything else requires a signed-in user
-  const { userId } = await auth();
+  // In your setup auth() is async
+  const session = await auth();
+  const { userId } = session;
 
+  // Not signed in → go to sign-in and return here after
   if (!userId) {
-    // Send them to sign-in, then back to the page they asked for
-    const signInUrl = new URL("/sign-in", req.url);
-    signInUrl.searchParams.set("redirect_url", req.url);
-    return NextResponse.redirect(signInUrl);
+    return session.redirectToSignIn({ returnBackUrl: req.url });
   }
 
-  // If you haven't configured emails yet, keep the app private by default
-  if (ALLOW_EMAILS.length === 0) {
+  // If no allow-lists configured, keep app private
+  if (ALLOW_EMAILS.length === 0 && ALLOW_USER_IDS.length === 0) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
-  // Pull the user's email from Clerk and check it against the allow list
+  // Allow by Clerk user ID
+  if (ALLOW_USER_IDS.includes(userId)) {
+    return NextResponse.next();
+  }
+
+  // Else allow by email
   try {
-    const client = await clerkClient();
+    const client = await getClerkClient();
     const user = await client.users.getUser(userId);
     const email =
       user.primaryEmailAddress?.emailAddress?.toLowerCase() ??
@@ -67,5 +83,5 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
 
 // Apply to everything except static assets
 export const config = {
-  matcher: ["/((?!_next|.*\\.(?:png|jpg|jpeg|gif|svg|ico|js|css|map)).*)"],
+  matcher: ["/((?!_next|.*\\.(?:png|jpg|jpeg|gif|svg|ico|js|css|map|txt|xml)).*)"],
 };
