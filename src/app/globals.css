@@ -1,6 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  /* Replace these later with your brand HSL values */
+  --brand-50: 210 100% 97%;
+  --brand-100: 210 95% 93%;
+  --brand-200: 213 97% 87%;
+  --brand-300: 217 91% 76%;
+  --brand-400: 221 83% 66%;
+  --brand-500: 224 76% 59%;
+  --brand-600: 226 71% 55%;
+  --brand-700: 230 69% 50%;
+  --brand-800: 235 63% 45%;
+  --brand-900: 240 57% 40%;
+
+  --background: 0 0% 100%;
+  --surface: 210 40% 98%;
+  --text-primary: 222 47% 11%;
+  --text-muted: 215 20% 45%;
+  --borderc: 214 32% 91%;
+  --accent: 280 80% 60%;
+}
 
 :root {
   --background: #ffffff;
