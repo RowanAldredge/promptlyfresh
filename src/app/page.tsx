@@ -1,3 +1,4 @@
+// src/app/(public)/page.tsx
 import Link from "next/link";
 import WaitlistForm from "./(marketing)/waitlist-form";
 
@@ -13,8 +14,9 @@ export default function LandingPage() {
             Promptly
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm">
-            <Link href="#features" className="text-slate-600 hover:text-slate-900 transition">Features</Link>
-            <Link href="#pricing" className="text-slate-600 hover:text-slate-900 transition">Pricing</Link>
+            <Link href="#why" className="text-slate-600 hover:text-slate-900 transition">Why Promptly</Link>
+            <Link href="#who" className="text-slate-600 hover:text-slate-900 transition">Who it’s for</Link>
+            <Link href="#how" className="text-slate-600 hover:text-slate-900 transition">How it works</Link>
             <a href="mailto:hello@getpromptly.org" className="text-slate-600 hover:text-slate-900 transition">Contact</a>
           </nav>
         </div>
@@ -35,95 +37,42 @@ export default function LandingPage() {
           </h1>
 
           <p className="mt-4 text-lg text-slate-600">
-            Promptly uses AI to write, test, and schedule your campaigns — so you can focus on building, not copywriting.
+            Promptly uses AI to write, test, and schedule your campaigns — and gets smarter with every send.
           </p>
 
           {/* Waitlist form directly below header */}
           <div className="mt-8 w-full max-w-lg mx-auto">
             <WaitlistForm />
-            <p className="mt-2 text-xs text-slate-500">
-              No spam — just launch updates.
-            </p>
+            <p className="mt-2 text-xs text-slate-500">No spam — just launch updates.</p>
           </div>
         </div>
       </section>
 
-      {/* WHO IS PROMPTLY FOR */}
-      <section className="border-y bg-white">
+      {/* WHY PROMPTLY */}
+      <section id="why" className="bg-white border-t">
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            Who Is Promptly For?
-          </h2>
-
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
-            Promptly is built for founders, creators, and small teams who want to send 
-            better marketing emails — without hiring a copywriter or wasting hours 
-            staring at a blank page.  
-            <br className="hidden md:block" />
-            Whether you run a Shopify store, manage a SaaS, or promote digital products, 
-            Promptly helps you write, test, and schedule campaigns in minutes.
-          </p>
-
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-slate-700 opacity-80">
-            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
-              🛍️ eCommerce founders
-            </span>
-            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
-              🧠 Creators & coaches
-            </span>
-            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
-              ⚙️ SaaS & startups
-            </span>
-            <span className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm">
-              ✉️ Freelancers & agencies
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* PROBLEM → PROMISE */}
-      <section className="bg-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            Writing marketing emails shouldn’t feel like homework.
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-semibold">Why Promptly?</h2>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-600">
-            Most founders waste hours figuring out what to say. Promptly writes,
-            optimizes, and schedules your emails — in your brand’s tone — and
-            learns from every send to improve results over time.
+            Most tools stop at “generate.” Promptly closes the loop — it <strong>writes</strong>, <strong>sends</strong>,
+            <strong> tracks</strong>, and <strong>learns</strong> from your results to improve the next email automatically.
           </p>
-        </div>
-      </section>
 
-      {/* FEATURES */}
-      <section id="features" className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
-          <h3 className="text-2xl md:text-3xl font-semibold text-center">
-            What you’ll soon do with Promptly
-          </h3>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-3 text-left">
             {[
               {
-                title: "Generate on-brand emails",
-                desc: "Describe your product and get a send-ready campaign in seconds.",
-                icon: "✉️",
+                title: "Beyond copy generation",
+                desc: "Create on-brand campaigns from a simple brief — subject, body, CTA, and structure in seconds."
               },
               {
-                title: "Improve automatically",
-                desc: "See which subjects and CTAs drive opens and clicks — recommendations included.",
-                icon: "📈",
+                title: "Built-in sending & scheduling",
+                desc: "Send immediately or schedule; stay consistent without juggling multiple tools."
               },
               {
-                title: "Send smarter",
-                desc: "Schedule, automate, and stay consistent without heavyweight tools.",
-                icon: "⚙️",
-              },
-            ].map(({ title, desc, icon }) => (
-              <div
-                key={title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-              >
-                <div className="text-3xl mb-3">{icon}</div>
+                title: "Analytics that train the AI",
+                desc: "Opens, clicks, and conversions feed back into Promptly so each send gets smarter."
+              }
+            ].map(({ title, desc }) => (
+              <div key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                 <div className="font-semibold text-lg">{title}</div>
                 <p className="mt-2 text-slate-600">{desc}</p>
               </div>
@@ -132,33 +81,86 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* PRICING / FOUNDING MEMBERS */}
-      <section id="pricing" className="bg-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
-          <h3 className="text-2xl md:text-3xl font-semibold">Founding members</h3>
-          <p className="mt-3 text-slate-600 max-w-2xl">
-            Early adopters get a lifetime discount and priority support when we launch.
-            Join the waitlist now to be notified first.
+      {/* WHO IS PROMPTLY FOR */}
+      <section id="who" className="bg-slate-50 border-t">
+        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold">Who Promptly is for</h2>
+
+          <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-600 leading-relaxed">
+            Founders, creators, and lean teams who want better emails without hiring a copywriter or spending hours writing.
+            Whether you sell products, software, or content — Promptly helps you grow with consistent, data-driven emails.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            {["Starter — $50/mo","Pro — $100/mo","Growth — $150/mo","Lifetime — $200 one-time"]
-              .map((plan) => (
-                <span
-                  key={plan}
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm"
-                >
-                  {plan}
-                </span>
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-slate-700">
+            {[
+              "🛍️ eCommerce stores",
+              "⚙️ SaaS & startups",
+              "🧠 Creators & coaches",
+              "🏪 Local businesses",
+              "📚 Info products & courses",
+              "✉️ Freelancers & agencies"
+            ].map((pill) => (
+              <span
+                key={pill}
+                className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm"
+              >
+                {pill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="how" className="bg-white border-t">
+        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
+          <h2 className="text-3xl md:text-4xl font-semibold text-center">How Promptly works</h2>
+
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {[
+              {
+                step: "1",
+                title: "Generate",
+                desc: "Describe your offer, audience, and goal. Promptly drafts subject lines, body copy, and CTAs in your voice."
+              },
+              {
+                step: "2",
+                title: "Send",
+                desc: "Schedule or send immediately. Stay consistent with built-in sending — no tool switching."
+              },
+              {
+                step: "3",
+                title: "Learn",
+                desc: "Opens, clicks, and conversions are analyzed. Promptly adapts tone, structure, and timing to improve the next send."
+              }
+            ].map(({ step, title, desc }) => (
+              <div key={step} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <div className="text-sm text-slate-500">Step {step}</div>
+                <div className="mt-1 font-semibold text-lg">{title}</div>
+                <p className="mt-2 text-slate-600">{desc}</p>
+              </div>
             ))}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="mt-10 max-w-lg">
-            <WaitlistForm />
-            <p className="mt-2 text-xs text-slate-500">
-              Be among the first to get access.
+          <div className="mt-8 text-center text-slate-600">
+            <p>
+              The more you send, the smarter it gets — recommendations for subjects, CTAs, and best send times come from your own performance data.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* BOTTOM CTA */}
+      <section id="cta" className="bg-blue-600 text-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-20 text-center">
+          <h3 className="text-2xl md:text-3xl font-semibold">
+            Still reading? You’re probably interested.
+          </h3>
+          <p className="mt-3 text-blue-100">
+            Enter your email to join the waitlist — early access opens soon.
+          </p>
+          <div className="mt-8 w-full max-w-lg mx-auto">
+            <WaitlistForm />
           </div>
         </div>
       </section>
