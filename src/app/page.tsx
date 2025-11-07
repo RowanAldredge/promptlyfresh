@@ -119,32 +119,33 @@ export default function LandingPage() {
   </div>
 </section>
 
-      {/* WHY PROMPTLY (horizontal, thesis-led) */}
-<section id="why" className="border-t border-borderc">
-  <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid gap-10 md:grid-cols-[240px,1fr]">
-    {/* Left rail */}
-    <aside className="md:pt-2">
-      <h2 className="text-2xl md:text-3xl font-semibold">Why Promptly</h2>
-    </aside>
+      {/* WHY PROMPTLY (vertical layout) */}
+<section id="why" className="border-t border-borderc bg-background">
+  <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
+    {/* Header now on top */}
+    <h2 className="text-3xl md:text-4xl font-semibold">Why Promptly</h2>
 
-    {/* Right content */}
-    <div className="space-y-10">
+    {/* Body container */}
+    <div className="mt-10 space-y-10 text-left">
       {/* Big thesis */}
-      <div className="rounded-3xl border border-borderc bg-surface p-6 md:p-8 shadow-sm">
-        <p className="text-xl md:text-2xl font-semibold leading-snug">
+      <div className="rounded-3xl border border-borderc bg-surface p-6 md:p-8 shadow-sm max-w-4xl mx-auto">
+        <p className="text-xl md:text-2xl font-semibold leading-snug text-center">
           Email shouldn’t be guesswork.{" "}
           <span className="bg-gradient-to-r from-brand-700 to-accent bg-clip-text text-transparent">
             Promptly adapts to your results.
           </span>
         </p>
-        <p className="mt-3 text-text-muted">
-          This isn’t just AI that drafts copy — it <span className="font-medium text-text-primary">learns from opens, clicks, and conversions</span>
+        <p className="mt-3 text-text-muted text-center">
+          This isn’t just AI that drafts copy — it{" "}
+          <span className="font-medium text-text-primary">
+            learns from opens, clicks, and conversions
+          </span>{" "}
           to write and time the next send better. That feedback loop changes how teams do email.
         </p>
       </div>
 
-      {/* Three proof points (horizontal on desktop) */}
-      <div className="grid gap-4 md:grid-cols-3">
+      {/* Three proof points (stack or grid) */}
+      <div className="grid gap-4 md:grid-cols-3 max-w-5xl mx-auto">
         {[
           {
             icon: "🧠",
@@ -162,7 +163,10 @@ export default function LandingPage() {
             desc: "Generate → Send → Learn — one system, no stitching tools.",
           },
         ].map(({ icon, title, desc }) => (
-          <div key={title} className="rounded-2xl border border-borderc bg-background p-5">
+          <div
+            key={title}
+            className="rounded-2xl border border-borderc bg-background p-5 text-center"
+          >
             <div className="text-2xl">{icon}</div>
             <div className="mt-2 font-semibold">{title}</div>
             <p className="mt-1 text-sm text-text-muted">{desc}</p>
@@ -171,8 +175,8 @@ export default function LandingPage() {
       </div>
 
       {/* Contrast card: old vs new */}
-      <div className="rounded-2xl border border-borderc overflow-hidden">
-        <div className="grid md:grid-cols-2">
+      <div className="rounded-2xl border border-borderc overflow-hidden max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 text-left">
           <div className="p-6 bg-background">
             <div className="text-sm font-semibold text-text-muted">The old way</div>
             <ul className="mt-2 space-y-2 text-sm text-text-muted">
