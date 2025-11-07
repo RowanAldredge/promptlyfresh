@@ -8,30 +8,70 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen bg-background text-text-primary">
       {/* Header */}
-      <header className="sticky top-0 z-20 bg-background/80 backdrop-blur border-b border-borderc">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="font-semibold tracking-tight">
-            Promptly
-          </Link>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <Link href="#why" className="text-text-muted hover:text-text-primary transition">
-              Why
-            </Link>
-            <Link href="#who" className="text-text-muted hover:text-text-primary transition">
-              Who
-            </Link>
-            <Link href="#how" className="text-text-muted hover:text-text-primary transition">
-              How
-            </Link>
-            <a
-              href="mailto:hello@getpromptly.org"
-              className="text-text-muted hover:text-text-primary transition"
-            >
-              Contact
-            </a>
-          </nav>
-        </div>
-      </header>
+<header className="sticky top-0 z-30 border-b border-transparent bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  {/* thin gradient accent line */}
+  <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-brand-600/50 to-transparent" />
+
+  <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+    {/* Brand + tiny tagline */}
+    <Link href="/" className="flex items-center gap-3">
+      <span className="text-brand-600 font-semibold text-xl tracking-tight">Promptly</span>
+      <span className="hidden sm:inline-flex items-center rounded-full border border-borderc bg-surface px-2.5 py-1 text-xs text-text-muted">
+        ✉️ AI email that learns
+      </span>
+    </Link>
+
+    {/* Desktop actions */}
+    <nav className="hidden md:flex items-center gap-3">
+      <Link
+        href="#how"
+        className="text-sm text-text-muted hover:text-text-primary px-3 py-2 rounded-lg hover:bg-surface"
+      >
+        How it works
+      </Link>
+      <a
+        href="mailto:hello@getpromptly.org"
+        className="text-sm text-text-muted hover:text-text-primary px-3 py-2 rounded-lg hover:bg-surface"
+      >
+        Contact
+      </a>
+      <Link
+        href="#top"
+        className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-accent text-white px-4 py-2 text-sm shadow-sm hover:opacity-90 transition"
+      >
+        Join waitlist
+        <span aria-hidden>→</span>
+      </Link>
+    </nav>
+
+    {/* Mobile menu (no JS needed) */}
+    <details className="md:hidden relative group">
+      <summary className="list-none inline-flex items-center gap-2 rounded-full border border-borderc bg-surface px-3 py-2 text-sm text-text-primary cursor-pointer hover:bg-background">
+        Menu <span className="text-text-muted">▾</span>
+      </summary>
+      <div className="absolute right-0 mt-2 w-56 rounded-2xl border border-borderc bg-background shadow-lg overflow-hidden">
+        <Link
+          href="#how"
+          className="block px-4 py-3 text-sm text-text-primary hover:bg-surface"
+        >
+          How it works
+        </Link>
+        <a
+          href="mailto:hello@getpromptly.org"
+          className="block px-4 py-3 text-sm text-text-primary hover:bg-surface"
+        >
+          Contact
+        </a>
+        <Link
+          href="#top"
+          className="block px-4 py-3 text-sm text-white bg-gradient-to-r from-brand-600 to-accent hover:opacity-90"
+        >
+          Join waitlist
+        </Link>
+      </div>
+    </details>
+  </div>
+</header>
 
       {/* HERO */}
 <section
