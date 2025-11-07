@@ -64,8 +64,8 @@ export default function LandingPage() {
 
     {/* Headline */}
     <h1 className="text-5xl md:text-5xl font-bold leading-tight tracking-tight">
-      The AI that writes your emails...{" "}
-      <span className="text-brand-600">and learns what works.</span>
+      The AI that writes your emails and...{" "}
+      <span className="text-brand-600">learns what works.</span>
     </h1>
 
     <p className="mt-4 text-lg text-text-muted">
