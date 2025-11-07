@@ -199,39 +199,43 @@ export default function LandingPage() {
   </div>
 </section>
 
-      {/* WHO */}
-      <section
-        id="who"
-        className="border-t border-borderc bg-gradient-to-b from-surface to-background"
-      >
-        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
-          <h3 className="text-3xl md:text-4xl font-semibold">Who it’s for</h3>
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-text-muted">
-            Founders, creators, and lean teams who want consistent, higher-performing email — without a copywriter.
-          </p>
-          <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {[
-              "🛍️ eCommerce stores",
-              "⚙️ SaaS & startups",
-              "🧠 Creators & coaches",
-              "🏪 Local businesses",
-              "📚 Courses & info products",
-              "✉️ Freelancers & agencies",
-            ].map((pill, i) => (
-              <span
-                key={pill}
-                className={`rounded-full px-4 py-2 text-sm shadow-sm ${
-                  i % 2 === 0
-                    ? "border border-borderc bg-background text-text-primary"
-                    : "border border-transparent bg-brand-50 text-brand-700"
-                }`}
-              >
-                {pill}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* WHO IT’S FOR */}
+<section
+  id="who"
+  className="border-t border-borderc bg-gradient-to-b from-surface to-background"
+>
+  <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
+    <h3 className="text-3xl md:text-4xl font-semibold">Who it’s for</h3>
+
+    <p className="mt-6 max-w-3xl mx-auto text-lg text-text-muted">
+      Founders, creators, and lean teams who want consistent, higher-performing email — without a copywriter.
+    </p>
+
+    {/* All six highlighted pills */}
+    <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-3 justify-center">
+      {[
+        "🛍️ eCommerce stores",
+        "⚙️ SaaS & startups",
+        "🧠 Creators & coaches",
+        "🏪 Local businesses",
+        "📚 Courses & info products",
+        "✉️ Freelancers & agencies",
+      ].map((pill) => (
+        <span
+          key={pill}
+          className="rounded-full border border-transparent bg-brand-50 text-brand-700 px-4 py-2 text-sm shadow-sm"
+        >
+          {pill}
+        </span>
+      ))}
+    </div>
+
+    {/* Cheeky follow-up line */}
+    <p className="mt-10 text-lg font-medium text-text-primary">
+      Trick question — Promptly is for <span className="text-brand-600">every business</span> looking to grow through smarter email.
+    </p>
+  </div>
+</section>
 
       {/* HOW */}
       <section id="how" className="border-t border-borderc">
