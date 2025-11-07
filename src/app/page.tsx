@@ -25,15 +25,15 @@ export default function LandingPage() {
         id="top"
         className="relative overflow-hidden px-4 py-28 md:py-40 bg-gradient-to-b from-brand-50 via-background to-background"
       >
-        {/* Aggressive gradient field */}
-        <div aria-hidden className="pointer-events-none absolute -top-32 -left-40 h-[38rem] w-[38rem] rounded-full bg-brand-600/25 blur-[120px]" />
-        <div aria-hidden className="pointer-events-none absolute -top-20 left-20 h-[28rem] w-[28rem] rounded-full bg-brand-700/25 blur-[120px]" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-32 h-[34rem] w-[34rem] rounded-full bg-accent/30 blur-[120px]" />
-        <div aria-hidden className="pointer-events-none absolute top-1/3 -right-10 h-64 w-64 rounded-full bg-brand-400/25 blur-[100px]" />
+        {/* Gradient field (toned down slightly) */}
+        <div aria-hidden className="pointer-events-none absolute -top-28 -left-36 h-[34rem] w-[34rem] rounded-full bg-brand-600/18 blur-[110px]" />
+        <div aria-hidden className="pointer-events-none absolute -top-16 left-16 h-[24rem] w-[24rem] rounded-full bg-brand-700/18 blur-[110px]" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-20 -right-28 h-[30rem] w-[30rem] rounded-full bg-accent/22 blur-[110px]" />
+        <div aria-hidden className="pointer-events-none absolute top-1/3 -right-10 h-56 w-56 rounded-full bg-brand-400/18 blur-[90px]" />
 
         <div className="relative max-w-3xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-            AI writes your emails — <span className="text-brand-600">then improves them with your data.</span>
+            AI writes your emails — <span className="text-brand-600">and learns what works.</span>
           </h1>
 
           <p className="mt-4 text-lg text-text-muted">
@@ -42,8 +42,9 @@ export default function LandingPage() {
 
           <div className="mt-8 w-full max-w-lg mx-auto">
             <WaitlistForm />
-            <p className="mt-3 text-sm text-text-muted">
-              Join the waitlist to be part of an industry-changing email platform.
+            {/* Same size as the paragraph above (text-lg) */}
+            <p className="mt-3 text-lg text-text-muted">
+              Join the waitlist to help shape an industry-changing email platform.
             </p>
           </div>
         </div>
@@ -94,7 +95,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* WHO (vertical, gradient + alternating pills) */}
+      {/* WHO */}
       <section id="who" className="border-t border-borderc bg-gradient-to-b from-surface to-background">
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
           <h3 className="text-3xl md:text-4xl font-semibold">Who it’s for</h3>
@@ -134,7 +135,6 @@ export default function LandingPage() {
             <p className="mt-3 text-text-muted max-w-2xl mx-auto">A simple flow that gets smarter as you send.</p>
           </div>
 
-          {/* Arrows on desktop; stacks on mobile */}
           <div className="mt-12 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
             {[
               { t: "Generate", d: "Brief Promptly. Get a draft you’d actually send." },
