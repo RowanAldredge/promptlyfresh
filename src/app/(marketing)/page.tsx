@@ -57,12 +57,12 @@ export default function LandingPage() {
   />
 
   <div className="relative max-w-3xl mx-auto text-center">
-    {/* Added brand header */}
-    <div className="text-brand-700 font-semibold text-sm uppercase tracking-widest mb-3">
+    {/* Larger brand name above headline */}
+    <div className="text-brand-600 font-semibold text-2xl md:text-3xl mb-4">
       Promptly
     </div>
 
-    {/* Updated headline */}
+    {/* Headline */}
     <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
       AI that writes your emails —{" "}
       <span className="text-brand-600">and learns what works.</span>
