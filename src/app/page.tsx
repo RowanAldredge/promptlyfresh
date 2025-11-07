@@ -58,7 +58,7 @@ export default function LandingPage() {
 
   <div className="relative max-w-3xl mx-auto text-center">
     {/* Larger brand name above headline */}
-    <div className="text-brand-600 font-semibold text-4xl md:text-3xl mb-4">
+    <div className="text-brand-600 font-semibold text-4xl md:text-5xl mb-4">
       Promptly
     </div>
 
