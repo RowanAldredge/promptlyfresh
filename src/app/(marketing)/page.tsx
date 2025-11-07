@@ -34,46 +34,52 @@ export default function LandingPage() {
       </header>
 
       {/* HERO */}
-      <section
-        id="top"
-        className="relative overflow-hidden px-4 py-28 md:py-40 bg-gradient-to-b from-brand-100 via-background to-background"
-      >
-        {/* Re-intensified gradients (vibrant but balanced) */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-40 -left-40 h-[42rem] w-[42rem] rounded-full bg-brand-600/25 blur-[130px]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-10 left-32 h-[32rem] w-[32rem] rounded-full bg-brand-500/25 blur-[130px]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-24 -right-36 h-[38rem] w-[38rem] rounded-full bg-accent/30 blur-[130px]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute top-1/3 right-0 h-64 w-64 rounded-full bg-brand-400/25 blur-[100px]"
-        />
+<section
+  id="top"
+  className="relative overflow-hidden px-4 py-28 md:py-40 bg-gradient-to-b from-brand-100 via-background to-background"
+>
+  {/* Gradient field */}
+  <div
+    aria-hidden
+    className="pointer-events-none absolute -top-40 -left-40 h-[42rem] w-[42rem] rounded-full bg-brand-600/25 blur-[130px]"
+  />
+  <div
+    aria-hidden
+    className="pointer-events-none absolute -top-10 left-32 h-[32rem] w-[32rem] rounded-full bg-brand-500/25 blur-[130px]"
+  />
+  <div
+    aria-hidden
+    className="pointer-events-none absolute -bottom-24 -right-36 h-[38rem] w-[38rem] rounded-full bg-accent/30 blur-[130px]"
+  />
+  <div
+    aria-hidden
+    className="pointer-events-none absolute top-1/3 right-0 h-64 w-64 rounded-full bg-brand-400/25 blur-[100px]"
+  />
 
-        <div className="relative max-w-3xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-            AI writes your emails —{" "}
-            <span className="text-brand-600">and learns what works.</span>
-          </h1>
+  <div className="relative max-w-3xl mx-auto text-center">
+    {/* Added brand header */}
+    <div className="text-brand-700 font-semibold text-sm uppercase tracking-widest mb-3">
+      Promptly
+    </div>
 
-          <p className="mt-4 text-lg text-text-muted">
-            Generate campaigns, send with one click, and let analytics train the next draft.
-          </p>
+    {/* Updated headline */}
+    <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
+      AI that writes your emails —{" "}
+      <span className="text-brand-600">and learns what works.</span>
+    </h1>
 
-          <div className="mt-8 w-full max-w-lg mx-auto">
-            <WaitlistForm />
-            <p className="mt-3 text-sm text-text-muted">
-              Join the waitlist to help shape an industry-changing email platform.
-            </p>
-          </div>
-        </div>
-      </section>
+    <p className="mt-4 text-lg text-text-muted">
+      Generate campaigns, send with one click, and let analytics train the next draft.
+    </p>
+
+    <div className="mt-8 w-full max-w-lg mx-auto">
+      <WaitlistForm />
+      <p className="mt-3 text-sm text-text-muted">
+        Join the waitlist to help shape an industry-changing email platform.
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* WHY PROMPTLY */}
       <section id="why" className="border-t border-borderc">
