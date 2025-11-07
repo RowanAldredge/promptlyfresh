@@ -63,8 +63,8 @@ export default function LandingPage() {
     </div>
 
     {/* Headline */}
-    <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-      AI that writes your emails {" "}
+    <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+      The AI that writes your emails {" "}
       <span className="text-brand-600">and learns what works.</span>
     </h1>
 
