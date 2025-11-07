@@ -13,19 +13,31 @@ export default function LandingPage() {
   <div className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-brand-600/50 to-transparent" />
 
   <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-    {/* Brand + tiny tagline */}
+    {/* Brand + tagline */}
     <Link href="/" className="flex items-center gap-3">
       <span className="text-brand-600 font-semibold text-xl tracking-tight">Promptly</span>
-         AI email that learns
+      <span className="text-sm text-text-muted hidden sm:inline">AI email that learns</span>
     </Link>
 
-    {/* Desktop actions */}
+    {/* Desktop navigation */}
     <nav className="hidden md:flex items-center gap-3">
+      <Link
+        href="#why"
+        className="text-sm text-text-muted hover:text-text-primary px-3 py-2 rounded-lg hover:bg-surface"
+      >
+        Why Promptly?
+      </Link>
+      <Link
+        href="#who"
+        className="text-sm text-text-muted hover:text-text-primary px-3 py-2 rounded-lg hover:bg-surface"
+      >
+        Who’s it for?
+      </Link>
       <Link
         href="#how"
         className="text-sm text-text-muted hover:text-text-primary px-3 py-2 rounded-lg hover:bg-surface"
       >
-        How it works
+        How does it work?
       </Link>
       <a
         href="mailto:hello@getpromptly.org"
@@ -48,6 +60,18 @@ export default function LandingPage() {
         Menu <span className="text-text-muted">▾</span>
       </summary>
       <div className="absolute right-0 mt-2 w-56 rounded-2xl border border-borderc bg-background shadow-lg overflow-hidden">
+        <Link
+          href="#why"
+          className="block px-4 py-3 text-sm text-text-primary hover:bg-surface"
+        >
+          Why Promptly?
+        </Link>
+        <Link
+          href="#who"
+          className="block px-4 py-3 text-sm text-text-primary hover:bg-surface"
+        >
+          Who’s it for?
+        </Link>
         <Link
           href="#how"
           className="block px-4 py-3 text-sm text-text-primary hover:bg-surface"
