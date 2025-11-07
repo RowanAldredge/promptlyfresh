@@ -16,9 +16,7 @@ export default function LandingPage() {
     {/* Brand + tiny tagline */}
     <Link href="/" className="flex items-center gap-3">
       <span className="text-brand-600 font-semibold text-xl tracking-tight">Promptly</span>
-      <span className="hidden sm:inline-flex items-center rounded-full border border-borderc bg-surface px-2.5 py-1 text-xs text-text-muted">
          AI email that learns
-      </span>
     </Link>
 
     {/* Desktop actions */}
