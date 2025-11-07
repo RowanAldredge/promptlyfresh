@@ -52,7 +52,7 @@ export default function LandingPage() {
           href="#how"
           className="block px-4 py-3 text-sm text-text-primary hover:bg-surface"
         >
-          How it works
+          How does it work?
         </Link>
         <a
           href="mailto:hello@getpromptly.org"
@@ -123,7 +123,7 @@ export default function LandingPage() {
 <section id="why" className="border-t border-borderc bg-background">
   <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
     {/* Header now on top */}
-    <h2 className="text-3xl md:text-4xl font-semibold">Why Promptly</h2>
+    <h2 className="text-3xl md:text-4xl font-semibold">Why Promptly?</h2>
 
     {/* Body container */}
     <div className="mt-10 space-y-10 text-left">
