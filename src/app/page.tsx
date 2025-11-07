@@ -25,17 +25,15 @@ export default function LandingPage() {
         id="top"
         className="relative overflow-hidden px-4 py-28 md:py-40 bg-gradient-to-b from-brand-50 via-background to-background"
       >
-        {/* playful blobs */}
-        <div aria-hidden className="pointer-events-none absolute -top-12 -left-10 h-56 w-56 rounded-full bg-brand-600/10 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-10 -right-10 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+        {/* Aggressive gradient field */}
+        <div aria-hidden className="pointer-events-none absolute -top-32 -left-40 h-[38rem] w-[38rem] rounded-full bg-brand-600/25 blur-[120px]" />
+        <div aria-hidden className="pointer-events-none absolute -top-20 left-20 h-[28rem] w-[28rem] rounded-full bg-brand-700/25 blur-[120px]" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-32 h-[34rem] w-[34rem] rounded-full bg-accent/30 blur-[120px]" />
+        <div aria-hidden className="pointer-events-none absolute top-1/3 -right-10 h-64 w-64 rounded-full bg-brand-400/25 blur-[100px]" />
 
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-borderc bg-surface px-3 py-1 text-xs text-brand-700 mb-4">
-            Early access • Limited invites
-          </div>
-
+        <div className="relative max-w-3xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-            AI writes your emails — <span className="text-brand-600">and learns what works.</span>
+            AI writes your emails — <span className="text-brand-600">then improves them with your data.</span>
           </h1>
 
           <p className="mt-4 text-lg text-text-muted">
@@ -44,19 +42,9 @@ export default function LandingPage() {
 
           <div className="mt-8 w-full max-w-lg mx-auto">
             <WaitlistForm />
-            <p className="mt-2 text-xs text-text-muted">No spam. Launch updates only.</p>
-          </div>
-
-          {/* quick value chips */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-            {["On-brand copy", "Built-in sending", "Learns from results"].map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-borderc bg-surface px-3 py-1 text-xs"
-              >
-                {t}
-              </span>
-            ))}
+            <p className="mt-3 text-sm text-text-muted">
+              Join the waitlist to be part of an industry-changing email platform.
+            </p>
           </div>
         </div>
       </section>
@@ -67,10 +55,10 @@ export default function LandingPage() {
           <aside className="md:pt-2">
             <div className="text-xs uppercase tracking-widest text-brand-700">Why Promptly</div>
             <h2 className="mt-2 text-2xl md:text-3xl font-semibold leading-snug">
-              Generate. Send. <span className="text-brand-600">Learn.</span>
+              Generate → Send → <span className="text-brand-600">Learn</span>
             </h2>
             <p className="mt-3 text-text-muted">
-              One loop — not three tools. Promptly improves with every send.
+              One loop — not three tools. Promptly gets better each time you hit send.
             </p>
           </aside>
 
@@ -82,10 +70,10 @@ export default function LandingPage() {
               <p className="mt-2 text-sm text-text-muted">
                 Subjects, body & CTAs from a simple brief — in your voice.
               </p>
-              <div className="mt-4 h-1 w-14 rounded bg-brand-600/60" />
+              <div className="mt-4 h-1 w-14 rounded bg-brand-600/70" />
             </div>
             {/* Send */}
-            <div className="rounded-2xl border border-borderc bg-accent/10 p-6 shadow-sm">
+            <div className="rounded-2xl border border-transparent bg-accent/15 p-6 shadow-sm">
               <div className="text-xs font-semibold tracking-wide text-text-muted">Send</div>
               <div className="mt-1 font-semibold">Built-in delivery</div>
               <p className="mt-2 text-sm text-text-muted">
@@ -106,7 +94,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* WHO (vertical, gentle gradient + colorful pills) */}
+      {/* WHO (vertical, gradient + alternating pills) */}
       <section id="who" className="border-t border-borderc bg-gradient-to-b from-surface to-background">
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
           <h3 className="text-3xl md:text-4xl font-semibold">Who it’s for</h3>
@@ -124,10 +112,10 @@ export default function LandingPage() {
             ].map((pill, i) => (
               <span
                 key={pill}
-                className={`rounded-full border px-4 py-2 text-sm shadow-sm ${
+                className={`rounded-full px-4 py-2 text-sm shadow-sm ${
                   i % 2 === 0
-                    ? "border-borderc bg-background text-text-primary"
-                    : "border-transparent bg-brand-50 text-brand-700"
+                    ? "border border-borderc bg-background text-text-primary"
+                    : "border border-transparent bg-brand-50 text-brand-700"
                 }`}
               >
                 {pill}
@@ -137,18 +125,16 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* HOW (vertical with bold arrows) */}
+      {/* HOW (arrow flow) */}
       <section id="how" className="border-t border-borderc">
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
           <div className="text-center">
             <div className="text-xs uppercase tracking-widest text-brand-700">How it works</div>
-            <h4 className="mt-2 text-2xl md:text-3xl font-semibold">From idea → inbox → insight</h4>
-            <p className="mt-3 text-text-muted max-w-2xl mx-auto">
-              A simple flow that gets smarter as you send.
-            </p>
+            <h4 className="mt-2 text-2xl md:text-3xl font-semibold">Idea ➜ Inbox ➜ Insight</h4>
+            <p className="mt-3 text-text-muted max-w-2xl mx-auto">A simple flow that gets smarter as you send.</p>
           </div>
 
-          {/* arrow row on desktop; stacks on mobile */}
+          {/* Arrows on desktop; stacks on mobile */}
           <div className="mt-12 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
             {[
               { t: "Generate", d: "Brief Promptly. Get a draft you’d actually send." },
@@ -162,7 +148,7 @@ export default function LandingPage() {
                 </div>
                 {idx < 2 && (
                   <div className="hidden md:flex items-center justify-center mt-4">
-                    <span className="text-3xl text-brand-600">➜</span>
+                    <span className="text-4xl text-brand-600">➜</span>
                   </div>
                 )}
               </div>
@@ -181,12 +167,8 @@ export default function LandingPage() {
           <div className="grid gap-8 md:grid-cols-[1fr,520px] items-center">
             <div>
               <div className="text-xs uppercase tracking-widest text-brand-100/90">Join the waitlist</div>
-              <h5 className="mt-2 text-2xl md:text-3xl font-semibold">
-                Still reading? You’re probably in.
-              </h5>
-              <p className="mt-2 text-white/80">
-                Drop your email to get early access and launch updates.
-              </p>
+              <h5 className="mt-2 text-2xl md:text-3xl font-semibold">Still reading? You’re probably in.</h5>
+              <p className="mt-2 text-white/80">Be first to try Promptly and shape what comes next.</p>
             </div>
             <div className="w-full max-w-lg md:justify-self-end">
               <WaitlistForm />
