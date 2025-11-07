@@ -205,10 +205,10 @@ export default function LandingPage() {
   className="border-t border-borderc bg-gradient-to-b from-surface to-background"
 >
   <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
-    <h3 className="text-3xl md:text-4xl font-semibold">Who it’s for</h3>
+    <h3 className="text-3xl md:text-4xl font-semibold">Who’s it for?</h3>
 
     <p className="mt-6 max-w-3xl mx-auto text-lg text-text-muted">
-      Founders, creators, and lean teams who want consistent, higher-performing email — without a copywriter.
+      There are so many options... could it be local businesses? Or maybe coaches?
     </p>
 
     {/* All six highlighted pills */}
@@ -232,7 +232,7 @@ export default function LandingPage() {
 
     {/* Cheeky follow-up line */}
     <p className="mt-10 text-lg font-medium text-text-primary">
-      Trick question — Promptly is for <span className="text-brand-600">every business</span> looking to grow through smarter email.
+      Trick question! — Promptly is for <span className="text-brand-600">every business</span> looking to grow through smarter email.
     </p>
   </div>
 </section>
