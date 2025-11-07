@@ -237,46 +237,66 @@ export default function LandingPage() {
   </div>
 </section>
 
-      {/* HOW */}
-      <section id="how" className="border-t border-borderc">
-        <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
-          <div className="text-center">
-            <div className="text-xs uppercase tracking-widest text-brand-700">
-              How it works
-            </div>
-            <h4 className="mt-2 text-2xl md:text-3xl font-semibold">
-              Idea ➜ Inbox ➜ Insight
-            </h4>
-            <p className="mt-3 text-text-muted max-w-2xl mx-auto">
-              A simple flow that gets smarter as you send.
-            </p>
-          </div>
+      {/* HOW DOES IT WORK */}
+<section id="how" className="border-t border-borderc bg-background">
+  <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
+    {/* Black header */}
+    <h3 className="text-3xl md:text-4xl font-semibold text-text-primary">
+      How does it work?
+    </h3>
 
-          <div className="mt-12 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
-            {[
-              { t: "Generate", d: "Brief Promptly. Get a draft you’d actually send." },
-              { t: "Send", d: "Ship or schedule — inside Promptly." },
-              { t: "Learn", d: "Analytics feed the next draft automatically." },
-            ].map(({ t, d }, idx) => (
-              <div key={t} className="flex-1">
-                <div className="rounded-2xl border border-borderc bg-surface p-5 h-full">
-                  <div className="text-sm font-semibold">{t}</div>
-                  <p className="mt-1 text-sm text-text-muted">{d}</p>
-                </div>
-                {idx < 2 && (
-                  <div className="hidden md:flex items-center justify-center mt-4">
-                    <span className="text-4xl text-brand-600">➜</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+    <p className="mt-4 text-lg text-text-muted max-w-2xl mx-auto">
+      Promptly turns your idea into high-performing campaigns through a simple, adaptive 3-step loop.
+    </p>
 
-          <p className="mt-10 text-center text-sm text-text-muted">
-            More sends → sharper subjects, stronger CTAs, smarter timing.
-          </p>
+    {/* Generate → Send → Learn cycle */}
+    <div className="mt-16 grid md:grid-cols-3 gap-8 text-left">
+      {/* Generate */}
+      <div className="rounded-3xl border border-borderc bg-surface p-8 shadow-sm hover:shadow-md transition">
+        <div className="flex items-center gap-3">
+          <div className="text-3xl">💡</div>
+          <div className="text-lg font-semibold text-brand-700">Generate</div>
         </div>
-      </section>
+        <p className="mt-3 text-text-muted text-sm leading-relaxed">
+          Start with a short prompt — your product, tone, and goal. Promptly creates ready-to-send emails in your brand’s voice.
+        </p>
+        <div className="mt-5 h-1 w-16 rounded bg-brand-600/70" />
+      </div>
+
+      {/* Send */}
+      <div className="rounded-3xl border border-transparent bg-gradient-to-b from-brand-50 to-accent/10 p-8 shadow-sm hover:shadow-md transition">
+        <div className="flex items-center gap-3">
+          <div className="text-3xl">🚀</div>
+          <div className="text-lg font-semibold text-accent">Send</div>
+        </div>
+        <p className="mt-3 text-text-muted text-sm leading-relaxed">
+          Send or schedule directly from Promptly — no integrations, no friction. You control when and how your audience hears from you.
+        </p>
+        <div className="mt-5 h-1 w-16 rounded bg-accent" />
+      </div>
+
+      {/* Learn */}
+      <div className="rounded-3xl border border-borderc bg-surface p-8 shadow-sm hover:shadow-md transition">
+        <div className="flex items-center gap-3">
+          <div className="text-3xl">📊</div>
+          <div className="text-lg font-semibold text-brand-700">Learn</div>
+        </div>
+        <p className="mt-3 text-text-muted text-sm leading-relaxed">
+          Every open, click, and conversion trains Promptly’s AI — improving your copy, timing, and performance automatically.
+        </p>
+        <div className="mt-5 h-1 w-16 rounded bg-brand-700" />
+      </div>
+    </div>
+
+    {/* Flow summary */}
+    <p className="mt-14 text-base text-text-muted">
+      <span className="font-medium text-text-primary">Generate.</span>{" "}
+      <span className="font-medium text-text-primary">Send.</span>{" "}
+      <span className="font-medium text-brand-600">Learn.</span>{" "}
+      Repeat — and watch your open rates grow with every campaign.
+    </p>
+  </div>
+</section>
 
       {/* BOTTOM CTA */}
       <section id="cta" className="bg-gradient-to-r from-brand-600 to-accent text-white">
