@@ -119,56 +119,81 @@ export default function LandingPage() {
   </div>
 </section>
 
-      {/* WHY PROMPTLY */}
-      <section id="why" className="border-t border-borderc">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid gap-12 md:grid-cols-[230px,1fr]">
-          <aside className="md:pt-2">
-            <div className="text-xs uppercase tracking-widest text-brand-700">
-              Why Promptly
-            </div>
-            <h2 className="mt-2 text-2xl md:text-3xl font-semibold leading-snug">
-              Generate → Send →{" "}
-              <span className="text-brand-600">Learn</span>
-            </h2>
-            <p className="mt-3 text-text-muted">
-              One loop — not three tools. Promptly gets better each time you hit send.
-            </p>
-          </aside>
+      {/* WHY PROMPTLY (horizontal, thesis-led) */}
+<section id="why" className="border-t border-borderc">
+  <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid gap-10 md:grid-cols-[240px,1fr]">
+    {/* Left rail */}
+    <aside className="md:pt-2">
+      <h2 className="text-2xl md:text-3xl font-semibold">Why Promptly</h2>
+    </aside>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                t: "Generate",
-                h: "On-brand in seconds",
-                d: "Subjects, body & CTAs from a simple brief — in your voice.",
-                c: "bg-brand-600/70",
-              },
-              {
-                t: "Send",
-                h: "Built-in delivery",
-                d: "Schedule or ship now — stay consistent without juggling tools.",
-                c: "bg-accent",
-              },
-              {
-                t: "Learn",
-                h: "Analytics-trained",
-                d: "Opens, clicks & conversions teach Promptly what to do next.",
-                c: "bg-brand-700",
-              },
-            ].map(({ t, h, d, c }) => (
-              <div
-                key={t}
-                className="rounded-2xl border border-borderc bg-surface p-6 shadow-sm"
-              >
-                <div className="text-xs font-semibold tracking-wide text-text-muted">{t}</div>
-                <div className="mt-1 font-semibold">{h}</div>
-                <p className="mt-2 text-sm text-text-muted">{d}</p>
-                <div className={`mt-4 h-1 w-14 rounded ${c}`} />
-              </div>
-            ))}
+    {/* Right content */}
+    <div className="space-y-10">
+      {/* Big thesis */}
+      <div className="rounded-3xl border border-borderc bg-surface p-6 md:p-8 shadow-sm">
+        <p className="text-xl md:text-2xl font-semibold leading-snug">
+          Email shouldn’t be guesswork.{" "}
+          <span className="bg-gradient-to-r from-brand-700 to-accent bg-clip-text text-transparent">
+            Promptly adapts to your results.
+          </span>
+        </p>
+        <p className="mt-3 text-text-muted">
+          This isn’t just AI that drafts copy — it <span className="font-medium text-text-primary">learns from opens, clicks, and conversions</span>
+          to write and time the next send better. That feedback loop changes how teams do email.
+        </p>
+      </div>
+
+      {/* Three proof points (horizontal on desktop) */}
+      <div className="grid gap-4 md:grid-cols-3">
+        {[
+          {
+            icon: "🧠",
+            title: "Learns your audience",
+            desc: "Tone, length, and CTAs adapt to what your list responds to.",
+          },
+          {
+            icon: "📈",
+            title: "Optimizes outcomes",
+            desc: "Subjects and send-times update based on real performance.",
+          },
+          {
+            icon: "⚡",
+            title: "Closes the loop",
+            desc: "Generate → Send → Learn — one system, no stitching tools.",
+          },
+        ].map(({ icon, title, desc }) => (
+          <div key={title} className="rounded-2xl border border-borderc bg-background p-5">
+            <div className="text-2xl">{icon}</div>
+            <div className="mt-2 font-semibold">{title}</div>
+            <p className="mt-1 text-sm text-text-muted">{desc}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Contrast card: old vs new */}
+      <div className="rounded-2xl border border-borderc overflow-hidden">
+        <div className="grid md:grid-cols-2">
+          <div className="p-6 bg-background">
+            <div className="text-sm font-semibold text-text-muted">The old way</div>
+            <ul className="mt-2 space-y-2 text-sm text-text-muted">
+              <li>• Static generators</li>
+              <li>• Manual timing guesses</li>
+              <li>• Analytics you never act on</li>
+            </ul>
+          </div>
+          <div className="p-6 bg-gradient-to-r from-brand-50 to-accent/10">
+            <div className="text-sm font-semibold text-brand-700">Promptly</div>
+            <ul className="mt-2 space-y-2 text-sm">
+              <li>• Drafts on-brand, fast</li>
+              <li>• Sends & schedules inside the app</li>
+              <li>• Learns from results to improve next send</li>
+            </ul>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* WHO */}
       <section
