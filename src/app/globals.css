@@ -2,24 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  /* Replace these later with your brand HSL values */
-  --brand-50: 210 100% 97%;
-  --brand-100: 210 95% 93%;
-  --brand-200: 213 97% 87%;
-  --brand-300: 217 91% 76%;
-  --brand-400: 221 83% 66%;
-  --brand-500: 224 76% 59%;
-  --brand-600: 226 71% 55%;
-  --brand-700: 230 69% 50%;
-  --brand-800: 235 63% 45%;
-  --brand-900: 240 57% 40%;
+  /* BRAND BLUE */
+  --brand-50: 222 100% 97%;
+  --brand-100: 220 95% 92%;
+  --brand-200: 219 90% 86%;
+  --brand-300: 218 85% 77%;
+  --brand-400: 220 80% 68%;
+  --brand-500: 221 75% 60%;
+  --brand-600: 223 70% 55%; /* Primary CTA */
+  --brand-700: 225 68% 50%; /* Hover */
+  --brand-800: 228 60% 44%;
+  --brand-900: 230 55% 38%;
 
+  /* ACCENT VIOLET */
+  --accent: 265 83% 65%;
+
+  /* NEUTRALS */
   --background: 0 0% 100%;
-  --surface: 210 40% 98%;
+  --surface: 220 40% 98%;
   --text-primary: 222 47% 11%;
   --text-muted: 215 20% 45%;
   --borderc: 214 32% 91%;
-  --accent: 280 80% 60%;
+
+  /* Optional success/error (used in buttons/alerts later) */
+  --success: 150 55% 42%;
+  --error: 0 72% 51%;
+}
+
+/* Optional dark mode foundation */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 222 47% 7%;
+    --surface: 220 30% 12%;
+    --text-primary: 210 40% 96%;
+    --text-muted: 215 20% 70%;
+    --borderc: 220 25% 20%;
+  }
 }
 
 :root {
