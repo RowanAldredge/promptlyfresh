@@ -58,13 +58,13 @@ export default function LandingPage() {
 
   <div className="relative max-w-3xl mx-auto text-center">
     {/* Larger brand name above headline */}
-    <div className="text-brand-600 font-semibold text-4xl md:text-7xl mb-4">
-      Promptly
+    <div className="text-brand-600 font-semibold text-4xl md:text-6xl mb-4">
+      Promptly,
     </div>
 
     {/* Headline */}
     <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-      AI that writes your emails —{" "}
+      AI that writes your emails {" "}
       <span className="text-brand-600">and learns what works.</span>
     </h1>
 
