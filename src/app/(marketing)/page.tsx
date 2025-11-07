@@ -10,9 +10,7 @@ export default function LandingPage() {
       {/* Header */}
       <header className="sticky top-0 z-20 bg-background/80 backdrop-blur border-b border-borderc">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="font-semibold tracking-tight">
-            Promptly
-          </Link>
+          <Link href="/" className="font-semibold tracking-tight">Promptly</Link>
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <Link href="#why" className="text-text-muted hover:text-text-primary transition">Why</Link>
             <Link href="#who" className="text-text-muted hover:text-text-primary transition">Who</Link>
@@ -25,78 +23,95 @@ export default function LandingPage() {
       {/* HERO */}
       <section
         id="top"
-        className="relative flex flex-col items-center justify-center text-center px-4 py-28 md:py-40 bg-gradient-to-b from-brand-50 via-background to-background"
+        className="relative overflow-hidden px-4 py-28 md:py-40 bg-gradient-to-b from-brand-50 via-background to-background"
       >
-        <div className="max-w-3xl mx-auto">
+        {/* playful blobs */}
+        <div aria-hidden className="pointer-events-none absolute -top-12 -left-10 h-56 w-56 rounded-full bg-brand-600/10 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-10 -right-10 h-56 w-56 rounded-full bg-accent/20 blur-3xl" />
+
+        <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-borderc bg-surface px-3 py-1 text-xs text-brand-700 mb-4">
-            Early Access • Join the waitlist
+            Early access • Limited invites
           </div>
 
           <h1 className="text-5xl md:text-6xl font-bold leading-tight tracking-tight">
-            Better emails, written and improved for you.
+            AI writes your emails — <span className="text-brand-600">and learns what works.</span>
           </h1>
 
           <p className="mt-4 text-lg text-text-muted">
-            Promptly writes your campaigns, sends them, and learns from results — so every send performs better than the last.
+            Generate campaigns, send with one click, and let analytics train the next draft.
           </p>
 
           <div className="mt-8 w-full max-w-lg mx-auto">
             <WaitlistForm />
-            <p className="mt-2 text-xs text-text-muted">No spam — launch updates only.</p>
+            <p className="mt-2 text-xs text-text-muted">No spam. Launch updates only.</p>
           </div>
-        </div>
-      </section>
 
-      {/* WHY PROMPTLY (horizontal split) */}
-      <section id="why" className="border-t border-borderc">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid gap-12 md:grid-cols-[220px,1fr]">
-          {/* Left rail */}
-          <aside className="md:pt-2">
-            <div className="text-xs uppercase tracking-widest text-brand-700">Why Promptly</div>
-            <h2 className="mt-2 text-2xl md:text-3xl font-semibold leading-snug">
-              Not just “AI that writes.” <br className="hidden md:block" />
-              AI that <span className="underline decoration-brand-200/70">closes the loop</span>.
-            </h2>
-            <p className="mt-3 text-text-muted">
-              Generate → Send → Learn. One system that writes, delivers, and adapts from your own data.
-            </p>
-          </aside>
-
-          {/* Right content */}
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                k: "Generate",
-                h: "On-brand in seconds",
-                d: "Subjects, body, and CTAs from a simple brief — in your voice.",
-              },
-              {
-                k: "Send",
-                h: "Built-in delivery",
-                d: "Schedule or ship now. Stay consistent without juggling tools.",
-              },
-              {
-                k: "Learn",
-                h: "Analytics-trained",
-                d: "Opens, clicks, and conversions inform the next draft automatically.",
-              },
-            ].map(({ k, h, d }) => (
-              <div key={k} className="rounded-2xl border border-borderc bg-surface p-6 shadow-sm">
-                <div className="text-xs font-semibold tracking-wide text-text-muted">{k}</div>
-                <div className="mt-1 font-semibold">{h}</div>
-                <p className="mt-2 text-text-muted text-sm">{d}</p>
-              </div>
+          {/* quick value chips */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            {["On-brand copy", "Built-in sending", "Learns from results"].map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-borderc bg-surface px-3 py-1 text-xs"
+              >
+                {t}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHO (vertical with pill matrix) */}
-      <section id="who" className="bg-surface border-t border-borderc">
+      {/* WHY PROMPTLY (horizontal split, colorful cards) */}
+      <section id="why" className="border-t border-borderc">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid gap-12 md:grid-cols-[230px,1fr]">
+          <aside className="md:pt-2">
+            <div className="text-xs uppercase tracking-widest text-brand-700">Why Promptly</div>
+            <h2 className="mt-2 text-2xl md:text-3xl font-semibold leading-snug">
+              Generate. Send. <span className="text-brand-600">Learn.</span>
+            </h2>
+            <p className="mt-3 text-text-muted">
+              One loop — not three tools. Promptly improves with every send.
+            </p>
+          </aside>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Generate */}
+            <div className="rounded-2xl border border-borderc bg-surface p-6 shadow-sm">
+              <div className="text-xs font-semibold tracking-wide text-text-muted">Generate</div>
+              <div className="mt-1 font-semibold">On-brand in seconds</div>
+              <p className="mt-2 text-sm text-text-muted">
+                Subjects, body & CTAs from a simple brief — in your voice.
+              </p>
+              <div className="mt-4 h-1 w-14 rounded bg-brand-600/60" />
+            </div>
+            {/* Send */}
+            <div className="rounded-2xl border border-borderc bg-accent/10 p-6 shadow-sm">
+              <div className="text-xs font-semibold tracking-wide text-text-muted">Send</div>
+              <div className="mt-1 font-semibold">Built-in delivery</div>
+              <p className="mt-2 text-sm text-text-muted">
+                Schedule or ship now — stay consistent without juggling tools.
+              </p>
+              <div className="mt-4 h-1 w-14 rounded bg-accent" />
+            </div>
+            {/* Learn */}
+            <div className="rounded-2xl border border-borderc bg-surface p-6 shadow-sm">
+              <div className="text-xs font-semibold tracking-wide text-text-muted">Learn</div>
+              <div className="mt-1 font-semibold">Analytics-trained</div>
+              <p className="mt-2 text-sm text-text-muted">
+                Opens, clicks & conversions teach Promptly what to do next.
+              </p>
+              <div className="mt-4 h-1 w-14 rounded bg-brand-700" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHO (vertical, gentle gradient + colorful pills) */}
+      <section id="who" className="border-t border-borderc bg-gradient-to-b from-surface to-background">
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28 text-center">
-          <h3 className="text-3xl md:text-4xl font-semibold">Who Promptly is for</h3>
+          <h3 className="text-3xl md:text-4xl font-semibold">Who it’s for</h3>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-text-muted">
-            Founders, creators, and lean teams who want consistent, higher-performing email without a copywriter.
+            Founders, creators, and lean teams who want consistent, higher-performing email — without a copywriter.
           </p>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {[
@@ -106,10 +121,14 @@ export default function LandingPage() {
               "🏪 Local businesses",
               "📚 Courses & info products",
               "✉️ Freelancers & agencies",
-            ].map((pill) => (
+            ].map((pill, i) => (
               <span
                 key={pill}
-                className="rounded-full border border-borderc bg-background px-4 py-2 text-sm text-text-primary shadow-sm"
+                className={`rounded-full border px-4 py-2 text-sm shadow-sm ${
+                  i % 2 === 0
+                    ? "border-borderc bg-background text-text-primary"
+                    : "border-transparent bg-brand-50 text-brand-700"
+                }`}
               >
                 {pill}
               </span>
@@ -118,53 +137,55 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* HOW (vertical timeline) */}
-      <section id="how" className="bg-background border-t border-borderc">
+      {/* HOW (vertical with bold arrows) */}
+      <section id="how" className="border-t border-borderc">
         <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
           <div className="text-center">
             <div className="text-xs uppercase tracking-widest text-brand-700">How it works</div>
-            <h4 className="mt-2 text-2xl md:text-3xl font-semibold">Generate → Send → Learn</h4>
+            <h4 className="mt-2 text-2xl md:text-3xl font-semibold">From idea → inbox → insight</h4>
             <p className="mt-3 text-text-muted max-w-2xl mx-auto">
-              Promptly improves with your data — subjects, CTAs, and send times get smarter as you grow.
+              A simple flow that gets smarter as you send.
             </p>
           </div>
 
-          <ol className="mt-12 relative border-l border-borderc max-w-3xl mx-auto pl-6">
+          {/* arrow row on desktop; stacks on mobile */}
+          <div className="mt-12 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
             {[
-              {
-                t: "Generate",
-                d: "Describe your offer, audience, and goal. Promptly drafts your email in your brand’s voice.",
-              },
-              {
-                t: "Send",
-                d: "Schedule or send immediately with built-in sending — no switching tools.",
-              },
-              {
-                t: "Learn",
-                d: "Opens, clicks, and conversions feed back to improve the next campaign automatically.",
-              },
-            ].map(({ t, d }) => (
-              <li key={t} className="mb-10 last:mb-0">
-                <div className="absolute -left-[10px] mt-1 h-5 w-5 rounded-full bg-brand-600 ring-4 ring-brand-100" />
-                <h5 className="font-semibold">{t}</h5>
-                <p className="mt-1 text-text-muted">{d}</p>
-              </li>
+              { t: "Generate", d: "Brief Promptly. Get a draft you’d actually send." },
+              { t: "Send", d: "Ship or schedule — inside Promptly." },
+              { t: "Learn", d: "Analytics feed the next draft automatically." },
+            ].map(({ t, d }, idx) => (
+              <div key={t} className="flex-1">
+                <div className="rounded-2xl border border-borderc bg-surface p-5 h-full">
+                  <div className="text-sm font-semibold">{t}</div>
+                  <p className="mt-1 text-sm text-text-muted">{d}</p>
+                </div>
+                {idx < 2 && (
+                  <div className="hidden md:flex items-center justify-center mt-4">
+                    <span className="text-3xl text-brand-600">➜</span>
+                  </div>
+                )}
+              </div>
             ))}
-          </ol>
+          </div>
+
+          <p className="mt-10 text-center text-sm text-text-muted">
+            More sends → sharper subjects, stronger CTAs, smarter timing.
+          </p>
         </div>
       </section>
 
       {/* BOTTOM CTA */}
-      <section id="cta" className="bg-brand-600 text-white">
+      <section id="cta" className="bg-gradient-to-r from-brand-600 to-accent text-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
           <div className="grid gap-8 md:grid-cols-[1fr,520px] items-center">
             <div>
-              <div className="text-xs uppercase tracking-widest text-brand-100">Join the waitlist</div>
+              <div className="text-xs uppercase tracking-widest text-brand-100/90">Join the waitlist</div>
               <h5 className="mt-2 text-2xl md:text-3xl font-semibold">
-                Still reading? You’re probably interested.
+                Still reading? You’re probably in.
               </h5>
-              <p className="mt-2 text-brand-100">
-                Drop your email and be first when Promptly opens early access.
+              <p className="mt-2 text-white/80">
+                Drop your email to get early access and launch updates.
               </p>
             </div>
             <div className="w-full max-w-lg md:justify-self-end">
