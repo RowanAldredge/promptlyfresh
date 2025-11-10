@@ -4,12 +4,12 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { prisma } from "@/lib/db";
+import NavLink from "./_components/nav-link"; // ← client component
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const { userId } = await auth();
   if (!userId) redirect("/sign-in");
 
-  // Ensure a profile exists; read plan for sidebar badge/CTA
   const profile = await prisma.profile.upsert({
     where: { userId },
     update: {},
@@ -24,7 +24,6 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       {/* Sidebar */}
       <aside className="border-r border-borderc bg-surface/70 backdrop-blur supports-[backdrop-filter]:bg-surface/60">
         <div className="h-full sticky top-0 flex flex-col p-5">
-
           {/* Brand */}
           <Link href="/dashboard" className="mb-6">
             <div className="inline-flex items-center gap-2">
@@ -49,21 +48,15 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             <NavLink href="/settings/billing">💳 Billing</NavLink>
           </nav>
 
-          {/* Spacer */}
           <div className="flex-1" />
 
-          {/* Plan badge + user */}
+          {/* Plan + user */}
           <div className="pt-4 border-t border-borderc">
             <div className="flex items-center justify-between">
               <span className="inline-flex items-center gap-2 rounded-full border border-borderc bg-background px-3 py-1 text-sm">
-                <span
-                  className={`h-2 w-2 rounded-full ${
-                    isFree ? "bg-amber-500" : "bg-brand-600"
-                  }`}
-                />
+                <span className={`h-2 w-2 rounded-full ${isFree ? "bg-amber-500" : "bg-brand-600"}`} />
                 Plan: {profile.plan.toUpperCase()}
               </span>
-
               <UserButton afterSignOutUrl="/" />
             </div>
 
@@ -84,35 +77,5 @@ export default async function AppLayout({ children }: { children: React.ReactNod
         <div className="mx-auto w-full max-w-6xl">{children}</div>
       </main>
     </div>
-  );
-}
-
-/* ---------- Client-side active link ---------- */
-"use client";
-import { usePathname } from "next/navigation";
-
-function NavLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  const pathname = usePathname();
-  const active =
-    pathname === href ||
-    (href !== "/dashboard" && pathname?.startsWith(href));
-
-  return (
-    <Link
-      href={href}
-      className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm transition
-        ${active
-          ? "bg-gradient-to-r from-brand-600 to-accent text-white shadow-sm"
-          : "border border-transparent hover:border-borderc hover:bg-background"
-        }`}
-    >
-      {children}
-    </Link>
   );
 }
